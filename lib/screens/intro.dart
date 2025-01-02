@@ -61,7 +61,7 @@ class Intro extends StatelessWidget {
                     const SizedBox(height: 8),
                     CustomButton(
                       onPressed: () {},
-                      color: AppColors.secondary,
+                      color: AppColors.primaryLight,
                       child: SizedBox(
                         width: 150,
                         child: Row(
