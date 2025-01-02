@@ -1,10 +1,12 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_loto/screens/intro.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'gen/gen.dart';
+import 'screens/intro.dart';
 
 void main() {
-  runApp(MainApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -15,7 +17,7 @@ class MainApp extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return MaterialApp(
       theme: ThemeData(textTheme: GoogleFonts.baloo2TextTheme(textTheme)),
-      home: Intro(),
+      home: const Intro(),
     );
   }
 }

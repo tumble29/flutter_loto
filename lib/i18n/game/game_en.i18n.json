@@ -1,0 +1,10 @@
+{
+  "medium": {
+    "name": "Medium",
+    "description": "Four in a row"
+  },
+  "large": {
+    "name": "Lớn",
+    "description": "Five in a row"
+  }
+}

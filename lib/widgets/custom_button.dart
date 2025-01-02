@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class CustomButton extends StatelessWidget {
   final Widget child;
@@ -13,6 +14,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final player = AudioPlayer();
     return ButtonTheme(
       shape: RoundedRectangleBorder(
         side: BorderSide(color: color.withOpacity(0.5), width: 5),
@@ -22,7 +24,11 @@ class CustomButton extends StatelessWidget {
       child: MaterialButton(
         padding: const EdgeInsets.all(5),
         color: color,
-        onPressed: onPressed,
+        onPressed: () {
+          player.setAsset('assets/sounds/button_click.mp3');
+          player.play();
+          onPressed();
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),

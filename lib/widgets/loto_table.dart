@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '/styles/styles.dart';
+
 class LotoTable extends StatelessWidget {
   final Color color;
   final int rowSize;
@@ -8,11 +10,11 @@ class LotoTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Table(
-        border: TableBorder.all(color: color, width: 1),
+        border: TableBorder.all(color: AppColors.text, width: 1),
         children: List.generate(3, (index) {
           return TableRow(
               children: List.generate(rowSize, (index) {
-            return SizedBox(
+            return const SizedBox(
               width: 50,
               height: 30,
             );

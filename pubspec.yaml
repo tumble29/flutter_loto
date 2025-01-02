@@ -11,14 +11,24 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^6.2.1
+  just_audio: ^0.9.42
+  slang: ^4.4.0
+  slang_flutter: ^4.4.0
+  flutter_localizations: # add this
+    sdk: flutter
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
   flutter_launcher_icons: ^0.14.2
+  build_runner: ^2.4.13
+  slang_build_runner: ^4.4.0
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/
+    - assets/images/
+    - assets/sounds/

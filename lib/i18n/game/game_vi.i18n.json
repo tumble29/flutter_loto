@@ -1,0 +1,10 @@
+{
+  "medium": {
+    "name": "Trung bình",
+    "description": "Hàng 4 số"
+  },
+  "large": {
+    "name": "Lớn",
+    "description": "Hàng 5 số"
+  }
+}
