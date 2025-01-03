@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '/config/config.dart';
 import '/gen/gen.dart';
 import '/styles/styles.dart';
 import '/widgets/widgets.dart';
+import '/screens/LotoScreen.dart'; // Đảm bảo import đúng đường dẫn
 
 class SelectModeScreen extends StatelessWidget {
   const SelectModeScreen({super.key});
@@ -43,33 +42,39 @@ class SelectModeScreen extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              ...GameModes.values.map(
-                (mode) {
-                  return Column(
-                    children: [
-                      MaterialButton(
-                        padding: EdgeInsets.zero,
-                        splashColor: Colors.transparent,
-                        onPressed: () {},
-                        child: Column(
-                          children: [
-                            LotoSheet(
-                              color: LotoColors[mode.index],
-                              rowSize: mode.description.rowSize,
-                              columnSize: 1,
-                            ),
-                            const SizedBox(height: 8),
-                            Center(
-                              child: Text(mode.description.name,
-                                  style: const TextStyle(fontSize: 20)),
-                            ),
-                          ],
+              // Tùy chọn các bảng
+              Center(
+                child: Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: List.generate(16, (index) {
+                    return MaterialButton(
+                      color: AppColors.primary,
+                      padding: const EdgeInsets.all(16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      onPressed: () {
+                        // Điều hướng đến LotoScreen với thông tin bảng được chọn
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                LotoScreen(boardIndex: index + 1),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Board ${index + 1}',
+                        style: const TextStyle(
+                          color: AppColors.text,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 20),
-                    ],
-                  );
-                },
+                    );
+                  }),
+                ),
               ),
               const Spacer(flex: 2),
             ],
