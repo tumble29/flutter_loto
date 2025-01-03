@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '/config/config.dart';
+import '/enums/enums.dart';
 import '/gen/gen.dart';
 import '/styles/styles.dart';
 import '/widgets/widgets.dart';
@@ -18,20 +18,7 @@ class SelectModeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 50,
-                height: 50,
-                child: CustomButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  color: AppColors.primary,
-                  child: const Icon(
-                    Icons.arrow_back_rounded,
-                    color: AppColors.text,
-                  ),
-                ),
-              ),
+              const CustomBackButton(),
               const SizedBox(height: 20),
               Center(
                 child: Text(
@@ -43,7 +30,7 @@ class SelectModeScreen extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              ...GameModes.values.map(
+              ...GameModeEnum.values.map(
                 (mode) {
                   return Column(
                     children: [

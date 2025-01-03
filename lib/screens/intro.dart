@@ -60,7 +60,14 @@ class Intro extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     CustomButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SettingsScreen(),
+                          ),
+                        );
+                      },
                       color: AppColors.secondary,
                       child: SizedBox(
                         width: 150,

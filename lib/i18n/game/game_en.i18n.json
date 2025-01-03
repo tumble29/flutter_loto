@@ -4,7 +4,7 @@
     "description": "Four in a row"
   },
   "large": {
-    "name": "Lớn",
+    "name": "Large",
     "description": "Five in a row"
   }
 }
