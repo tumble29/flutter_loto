@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../styles/styles.dart';
+import '/styles/styles.dart';
 import '/gen/gen.dart';
 import 'screens.dart';
 import '/widgets/widgets.dart';
@@ -9,6 +9,7 @@ class Intro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -60,8 +61,15 @@ class Intro extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     CustomButton(
-                      onPressed: () {},
-                      color: AppColors.primaryLight,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SettingsScreen(),
+                          ),
+                        );
+                      },
+                      color: AppColors.secondary,
                       child: SizedBox(
                         width: 150,
                         child: Row(
