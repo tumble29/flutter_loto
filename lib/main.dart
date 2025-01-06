@@ -7,7 +7,7 @@ import 'styles/styles.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
-  runApp(const MainApp());
+  runApp(TranslationProvider(child: const MainApp()));
 }
 
 class MainApp extends StatelessWidget {

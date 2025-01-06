@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../styles/styles.dart';
+import '/styles/styles.dart';
 import '/gen/gen.dart';
 import 'screens.dart';
 import '/widgets/widgets.dart';
@@ -9,6 +9,7 @@ class Intro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,

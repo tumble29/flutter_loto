@@ -7,7 +7,6 @@ import '/widgets/widgets.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
-
   Widget settingField({required Widget child}) {
     return Container(
       padding: const EdgeInsets.all(10),
@@ -21,6 +20,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    var currentLocale = LocaleSettings.currentLocale;
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 68,
@@ -44,27 +45,36 @@ class SettingsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 settingField(
-                    child: Row(
-                  children: [
-                    Text(
-                      t.settings.language,
-                      style: const TextStyle(fontSize: 30),
-                    ),
-                    const Spacer(),
-                    DropdownButton(
-                      items: LanguageEnum.values.map((language) {
-                        return DropdownMenuItem(
-                          value: language,
-                          child: Text(
-                            language.description,
-                            style: const TextStyle(fontSize: 30),
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (language) {},
-                    )
-                  ],
-                )),
+                  child: Row(
+                    children: [
+                      Text(
+                        t.settings.language,
+                        style: const TextStyle(fontSize: 30),
+                      ),
+                      const Spacer(),
+                      DropdownButton(
+                        value: currentLocale,
+                        items: AppLocale.values.map((language) {
+                          return DropdownMenuItem(
+                            value: language,
+                            child: Text(
+                              language.description,
+                              style: const TextStyle(fontSize: 30),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (locale) {
+                          if (locale != null && locale != currentLocale) {
+                            LocaleSettings.setLocale(
+                              locale,
+                              listenToDeviceLocale: true,
+                            );
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

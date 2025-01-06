@@ -1,11 +1,11 @@
-enum LanguageEnum { en, vi }
+import '/gen/gen.dart';
 
-extension LanguageEnumExt on LanguageEnum {
+extension AppLocaleEnum on AppLocale {
   String get description {
     switch (this) {
-      case LanguageEnum.en:
+      case AppLocale.en:
         return 'English';
-      case LanguageEnum.vi:
+      case AppLocale.vi:
         return 'Tiếng Việt';
     }
   }
