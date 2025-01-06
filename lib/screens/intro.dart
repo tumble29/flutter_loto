@@ -69,7 +69,7 @@ class Intro extends StatelessWidget {
                           ),
                         );
                       },
-                      color: AppColors.secondary,
+                      color: AppColors.primaryLight,
                       child: SizedBox(
                         width: 150,
                         child: Row(
