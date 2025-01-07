@@ -4,12 +4,28 @@ import '/enums/enums.dart';
 import '/gen/gen.dart';
 import '/styles/styles.dart';
 import '/widgets/widgets.dart';
+import 'screens.dart';
 
 class SelectModeScreen extends StatelessWidget {
   const SelectModeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    void onGameModeSelected(GameModeEnum gameMode) {
+      switch (gameMode) {
+        case GameModeEnum.large:
+          break;
+        case GameModeEnum.medium:
+          break;
+      }
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SelectPlayerNumberScreen(),
+          ));
+    }
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -37,7 +53,7 @@ class SelectModeScreen extends StatelessWidget {
                       MaterialButton(
                         padding: EdgeInsets.zero,
                         splashColor: Colors.transparent,
-                        onPressed: () {},
+                        onPressed: () => onGameModeSelected(mode),
                         child: Column(
                           children: [
                             LotoSheet(

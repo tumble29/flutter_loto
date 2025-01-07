@@ -6,5 +6,11 @@ A new Flutter project.
 
 ```
 flutter pub get
-dart run slang
+dart run build_runner build --delete-conflicting-outputs
 ```
+
+# Resources
+
+Icons from:
+
+- https://www.flaticon.com/authors/roundicons
