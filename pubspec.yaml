@@ -1,6 +1,6 @@
 name: flutter_loto
-description: 'A new Flutter project.'
-publish_to: 'none'
+description: "A new Flutter project."
+publish_to: "none"
 version: 0.1.0
 
 environment:
@@ -14,7 +14,7 @@ dependencies:
   just_audio: ^0.9.42
   slang: ^4.4.0
   slang_flutter: ^4.4.0
-  flutter_localizations: # add this
+  flutter_localizations:
     sdk: flutter
 
 dev_dependencies:
@@ -24,6 +24,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.2
   build_runner: ^2.4.13
   slang_build_runner: ^4.4.0
+  flutter_gen_runner: ^5.8.0
 
 flutter:
   uses-material-design: true
@@ -32,3 +33,6 @@ flutter:
     - assets/
     - assets/images/
     - assets/sounds/
+    - assets/icons/
+    - assets/icons/svgs/
+    - assets/icons/pngs/
