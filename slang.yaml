@@ -1,5 +1,0 @@
-base_locale: vi
-input_directory: lib/i18n # Make sure this matches the path to your i18n folder
-namespaces: true # Enable namespaces for subdirectories like 'game' and 'intro'
-output_directory: lib/gen
-output_file_name: translations.g.dart

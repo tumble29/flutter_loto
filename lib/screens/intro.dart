@@ -46,15 +46,19 @@ class Intro extends StatelessWidget {
                       child: SizedBox(
                         width: 150,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               t.intro.play,
                               style: const TextStyle(
-                                  fontWeight: FontWeight.w900, fontSize: 30),
+                                fontWeight: FontWeight.w900,
+                                fontSize: 30,
+                              ),
                             ),
                             const SizedBox(width: 10),
-                            const Icon(Icons.queue_play_next_sharp),
+                            const Icon(
+                              Icons.play_circle,
+                            ),
                           ],
                         ),
                       ),
@@ -73,12 +77,14 @@ class Intro extends StatelessWidget {
                       child: SizedBox(
                         width: 150,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               t.intro.settings,
                               style: const TextStyle(
-                                  fontWeight: FontWeight.w900, fontSize: 30),
+                                fontWeight: FontWeight.w900,
+                                fontSize: 30,
+                              ),
                             ),
                             const SizedBox(width: 10),
                             const Icon(Icons.settings),
