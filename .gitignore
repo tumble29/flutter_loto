@@ -44,4 +44,4 @@ app.*.map.json
 
 # Generated file
 *.g.dart
-.fake
+*.gen.dart
