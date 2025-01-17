@@ -1,80 +1,71 @@
 import 'package:flutter/material.dart';
-
-import '/enums/enums.dart';
-import '/gen/gen.dart';
 import '/styles/styles.dart';
 import '/widgets/widgets.dart';
-import 'screens.dart';
+import '/screens/LotoScreen.dart'; // Đảm bảo đường dẫn đến file LotoScreen đúng
 
 class SelectModeScreen extends StatelessWidget {
   const SelectModeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final t = Translations.of(context);
-    void onGameModeSelected(GameModeEnum gameMode) {
-      switch (gameMode) {
-        case GameModeEnum.large:
-          break;
-        case GameModeEnum.medium:
-          break;
-      }
+    void onGameModeSelected(String gameMode) {
+      // Chuyển hướng đến màn hình LotoScreen với thông tin chế độ chơi
       Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SelectPlayerNumberScreen(),
-          ));
+        context,
+        MaterialPageRoute(
+          builder: (context) => LotoScreen(mode: gameMode),
+        ),
+      );
     }
 
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+        child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CustomBackButton(),
-              const SizedBox(height: 20),
-              Center(
-                child: Text(
-                  t.selectMode.select_mode,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 40,
-                      color: AppColors.text),
+              MaterialButton(
+                padding: EdgeInsets.zero,
+                splashColor: Colors.transparent,
+                onPressed: () => onGameModeSelected('Cổ điển'),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.red,
+                  ),
+                  child: const Text(
+                    'Cổ điển',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
-              const Spacer(),
-              ...GameModeEnum.values.map(
-                (mode) {
-                  return Column(
-                    children: [
-                      MaterialButton(
-                        padding: EdgeInsets.zero,
-                        splashColor: Colors.transparent,
-                        onPressed: () => onGameModeSelected(mode),
-                        child: Column(
-                          children: [
-                            LotoSheet(
-                              color: LotoColors[mode.index],
-                              rowSize: mode.description.rowSize,
-                              columnSize: 1,
-                            ),
-                            const SizedBox(height: 8),
-                            Center(
-                              child: Text(mode.description.name,
-                                  style: const TextStyle(fontSize: 20)),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                    ],
-                  );
-                },
+              const SizedBox(height: 20), // Khoảng cách giữa hai nút
+              MaterialButton(
+                padding: EdgeInsets.zero,
+                splashColor: Colors.transparent,
+                onPressed: () => onGameModeSelected('Mở rộng'),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.green,
+                  ),
+                  child: const Text(
+                    'Mở rộng',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
-              const Spacer(flex: 2),
             ],
           ),
         ),
