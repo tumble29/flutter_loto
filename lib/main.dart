@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
           textTheme: GoogleFonts.baloo2TextTheme(textTheme),
           scaffoldBackgroundColor: AppColors.background),
-      home: const Intro(),
+      home: Intro(),
     );
   }
 }
