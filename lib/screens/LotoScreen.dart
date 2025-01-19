@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '/utils/loto_generator.dart';
@@ -100,6 +99,73 @@ class _LotoScreenState extends State<LotoScreen> {
     });
   }
 
+  // Hàm kiểm tra nếu có 5 ô số liên tiếp trong hàng ngang
+  bool checkHorizontalWin() {
+    for (int row = 0; row < selectedBoard.length; row++) {
+      int count = 0;
+      for (int col = 0; col < selectedBoard[row].length; col++) {
+        if (highlighted[row][col]) {
+          count++;
+          if (count == 5) {
+            return true; // Có 5 ô liên tiếp
+          }
+        } else {
+          count = 0; // Reset nếu không phải ô đã chọn
+        }
+      }
+    }
+    return false;
+  }
+
+  // Hàm kiểm tra nếu 5 số người chơi nhập đều có trong danh sách đã quay
+  void checkInputWin() {
+    TextEditingController inputController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Nhập 5 số dự đoán chiến thắng"),
+        content: TextField(
+          controller: inputController,
+          decoration: const InputDecoration(
+            hintText: "Nhập 5 số, cách nhau bởi dấu phẩy",
+          ),
+          keyboardType: TextInputType.number,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Hủy"),
+          ),
+          TextButton(
+            onPressed: () {
+              List<int> guessedNumbers = inputController.text
+                  .split(',')
+                  .map((e) => int.tryParse(e.trim()) ?? -1)
+                  .toList();
+
+              if (guessedNumbers.length == 5 &&
+                  guessedNumbers.every((num) => num != -1) &&
+                  guessedNumbers.every((num) => calledNumbers.contains(num))) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Chiến thắng!")),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Chưa chiến thắng!")),
+                );
+              }
+              Navigator.pop(context);
+            },
+            child: const Text("Kiểm tra"),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,6 +244,29 @@ class _LotoScreenState extends State<LotoScreen> {
               ElevatedButton(
                 onPressed: stopCalling,
                 child: const Text('Dừng lại'),
+              ),
+              const SizedBox(width: 16),
+              ElevatedButton(
+                onPressed: () {
+                  if (checkHorizontalWin()) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content:
+                              Text('Chiến thắng! Bạn có 5 ô ngang liên tiếp!')),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text('Chưa có chiến thắng ngang!')),
+                    );
+                  }
+                },
+                child: const Text('Kiểm tra chiến thắng ngang'),
+              ),
+              const SizedBox(width: 16),
+              ElevatedButton(
+                onPressed: checkInputWin,
+                child: const Text('Kiểm tra số dự đoán'),
               ),
             ],
           ),
